@@ -12,7 +12,7 @@ Your Personal Task Management System.
 
 A handy task management system in which users can create tasks for their reference. The frontend part of this project is built using React and bootstrap. Users can create, update and delete tasks as per requirement, and access them securely as and when required.  
 
-This repository contains the frontend part of the TMS web application. You can refer the backend part Here: https://github.com/RohanRana10/tms_frontend.git
+This repository contains the frontend part of the TMS web application. You can refer the backend part Here: https://github.com/RohanRana10/tms_backend.git
 
 ## Features
 
@@ -35,8 +35,8 @@ Before you begin, ensure you have the following installed on your machine:
 
 ### Clone the Repository
 
-git clone https://github.com/RohanRana10/tms_backend.git  
-cd tms_backend   
+git clone https://github.com/RohanRana10/tms_frontend.git  
+cd tms_frontend   
 npm install  
 
 ## Setting up Environment Variables
