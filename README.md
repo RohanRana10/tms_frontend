@@ -51,5 +51,13 @@ npm start
 ## Screenshots  
 
 - Login Page
-![TMS LOGIN PAGE](https://i.postimg.cc/jqkyhgVR/login-page.png)
 
+![TMS LOGIN PAGE](https://i.postimg.cc/jqkyhgVR/login-page.png)  
+
+- Home Page  
+
+![TMS LOGIN PAGE](https://i.postimg.cc/BQLH7TsH/home-page.png)  
+
+- Edit Task  
+
+![TMS LOGIN PAGE](https://i.postimg.cc/VLxMxJLT/edit-task.png)  
