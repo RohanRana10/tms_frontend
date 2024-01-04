@@ -13,6 +13,7 @@ const Navbar = (props) => {
     const modalClose = useRef();
     let location = useLocation();
 
+    //function to add a new task
     const handleSubmit = async (e) => {
         e.preventDefault();
         props.updateLoader("start");
@@ -26,13 +27,14 @@ const Navbar = (props) => {
         else {
             props.alert("error", `${data.error}`);
         }
-        // console.log(task);
     }
 
+    //onchange handler for task
     const onChange = (e) => {
         setTask({ ...task, [e.target.name]: e.target.value });
     }
 
+    //function to toggle task
     const toggleChange = () => {
         setTask({ ...task, isComplete: !task.isComplete })
         console.log(task.isComplete);
@@ -42,6 +44,7 @@ const Navbar = (props) => {
         setTask({ title: '', description: '', tag: '', isComplete: false });
     }
 
+    //function to logout the user
     const handleLogout = () => {
         localStorage.removeItem('authtoken');
         navigate('/login');
@@ -50,7 +53,6 @@ const Navbar = (props) => {
 
     return (
         <div>
-
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -74,11 +76,9 @@ const Navbar = (props) => {
                                 </div>
                                 <div className="form-check my-3 form-switch form-check-reverse">
                                     <input className="form-check-input" type="checkbox" id="flexSwitchCheckReverse" onChange={toggleChange} name='isComplete' checked={task.isComplete} />
-                                    <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Task already Complete?</label>
+                                    <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Task already complete?</label>
                                 </div>
-
                                 <button type="submit" className="btn btn-primary">Create Task</button>
-
                             </form>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ const Navbar = (props) => {
 
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
-                    <Link style={{color: 'white'}} id='logo-font' className="navbar-brand" to="/">TMS</Link>
+                    <Link style={{ color: 'white' }} id='logo-font' className="navbar-brand" to="/">TMS</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

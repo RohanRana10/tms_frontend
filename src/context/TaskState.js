@@ -16,8 +16,8 @@ const TaskState = (props) => {
                 "authtoken": localStorage.getItem('authtoken')
             }
         });
+
         const json = await response.json();
-        console.log(json);
         setTasks(json.tasks);
     }
 
@@ -96,7 +96,6 @@ const TaskState = (props) => {
                     updatedTasks[i].updatedAt = json.task.updatedAt;
                     break;
                 }
-                
             }
             setTasks(updatedTasks);
         }
@@ -113,7 +112,6 @@ const TaskState = (props) => {
 
         const day = inputDate.getDate();
         const month = months[inputDate.getMonth()];
-        // const year = inputDate.getFullYear();
 
         let hours = inputDate.getHours();
         const minutes = inputDate.getMinutes();

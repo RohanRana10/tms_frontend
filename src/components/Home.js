@@ -32,6 +32,7 @@ const Home = (props) => {
     // eslint-disable-next-line
   }, [])
 
+  //function to set task contents
   const updateTask = (task) => {
     editModal.current.click();
     console.log(`editing ${task._id}`);
@@ -44,11 +45,11 @@ const Home = (props) => {
     })
   }
 
+  //function to edit a task
   const handleSubmit = async (e) => {
     e.preventDefault();
     updateLoader("start");
     let data = await editTask(task.id, task.title, task.description, task.tag, task.isComplete);
-    // console.log(task);
     updateLoader("end");
     if (data.success) {
       props.alert("success", `${data.message}`);
@@ -59,10 +60,12 @@ const Home = (props) => {
     closeEditModal.current.click();
   }
 
+  //onchange handler for task
   const onChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
   }
 
+  //function to toggle task
   const toggleChange = () => {
     setTask({ ...task, isComplete: !task.isComplete });
   }
@@ -72,7 +75,6 @@ const Home = (props) => {
       <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#editModal" ref={editModal}>
         Launch modal
       </button>
-
       <div className="modal fade" id="editModal" tabIndex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
@@ -96,19 +98,16 @@ const Home = (props) => {
                 </div>
                 <div className="form-check my-3 form-switch form-check-reverse">
                   <input className="form-check-input" type="checkbox" id="flexSwitchCheckReverse" onChange={toggleChange} name='isComplete' checked={task.isComplete} />
-                  <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Task already Complete?</label>
+                  <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Mark as complete?</label>
                 </div>
                 <button type="submit" className="btn btn-primary">Save changes</button>
               </form>
             </div>
-            {/* <div className="modal-footer">
-              <button type="button" onClick={handleSubmit} className="btn btn-primary">Save changes</button>
-            </div> */}
           </div>
         </div>
       </div>
       <div className='container'>
-        <h1 className='my-5 text-center text-light d-flex justify-content-center align-items-center'><span style={{fontSize: "45px"}} id='logo-font'>TMS &nbsp;</span><span> - Your Personal Task Management System</span></h1>
+        <h1 className='mb-5 text-center text-light d-flex justify-content-center align-items-center'><span style={{ fontSize: "45px" }} id='logo-font'>TMS &nbsp;</span><span> - Your Personal Task Management System</span></h1>
         {tasks.length === 0 ? <p className='text-light text-center'>No tasks found! Start by adding a new Task.</p> :
           <>
             {tasks.map((task) => {
