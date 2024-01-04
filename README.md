@@ -51,5 +51,5 @@ npm start
 ## Screenshots  
 
 - Login Page
-![TMS LOGIN PAGE](https://postimg.cc/8sMFpbPY)
+![TMS LOGIN PAGE](https://i.postimg.cc/jqkyhgVR/login-page.png)
 
