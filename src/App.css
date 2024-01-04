@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Aleo:wght@300&family=Pacifico&display=swap');
+
+body {
+    background-color: #061621;
+    /* color: white; */
+}
+
+#logo-font {
+    font-family: 'Aleo', serif;
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+}
+
+.card {
+    background-color: #061621;
+    border: 1px solid #a3a3a3;
+    /* color: white; */
+    padding: 10px;
+}
+
+
+.card-subtitle {
+    color: #a3a3a3;
+    margin-top: 10px;
+    /* background-color: #a3a3a3; */
+}
+
+.navbar {
+    background-color: #061621;
+    padding-top: 10px;
+    color: white;
+    /* border-bottom: 1px solid white; */
+}

@@ -70,6 +70,7 @@ const TaskState = (props) => {
         return json;
     }
 
+    //edit a task
     const editTask = async (taskId, title, description, tag, isComplete) => {
 
         const response = await fetch(`${host}/tasks/update/${taskId}`, {
@@ -92,6 +93,7 @@ const TaskState = (props) => {
                     updatedTasks[i].description = description;
                     updatedTasks[i].tag = tag === '' ? 'General' : tag;
                     updatedTasks[i].isComplete = isComplete;
+                    updatedTasks[i].updatedAt = json.task.updatedAt;
                     break;
                 }
                 
@@ -102,8 +104,49 @@ const TaskState = (props) => {
         return json;
     }
 
+    //Date fromatting function
+    function formatDate(inputDate) {
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        const day = inputDate.getDate();
+        const month = months[inputDate.getMonth()];
+        // const year = inputDate.getFullYear();
+
+        let hours = inputDate.getHours();
+        const minutes = inputDate.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+
+        // Convert hours to 12-hour format
+        hours = hours % 12;
+        hours = hours ? hours : 12; // 0 should be 12
+
+        const formattedDate = `${month} ${day}${getOrdinalSuffix(day)}, ${hours}:${padZero(minutes)} ${ampm}`;
+        return formattedDate;
+    }
+
+    // Helper function to get the ordinal suffix for the day
+    function getOrdinalSuffix(day) {
+        if (day >= 11 && day <= 13) {
+            return "th";
+        }
+        switch (day % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
+    }
+
+    // Helper function to pad zero for minutes
+    function padZero(value) {
+        return value < 10 ? `0${value}` : value;
+    }
+
     return (
-        <TaskContext.Provider value={{ tasks, getTasks, addTask, deleteTask, editTask }}>
+        <TaskContext.Provider value={{ tasks, getTasks, addTask, deleteTask, editTask, formatDate }}>
             {props.children}
         </TaskContext.Provider>
     )

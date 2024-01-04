@@ -7,6 +7,7 @@ const Home = (props) => {
   const navigate = useNavigate();
   const context = useContext(taskContext);
   let { tasks, getTasks, editTask } = context;
+  let { updateLoader } = props;
   const editModal = useRef();
   const closeEditModal = useRef();
 
@@ -20,7 +21,9 @@ const Home = (props) => {
 
   useEffect(() => {
     if (localStorage.getItem('authtoken')) {
+      updateLoader("start");
       getTasks();
+      updateLoader("end");
       document.title = "Home | Task Management System";
     }
     else {
@@ -43,12 +46,14 @@ const Home = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    updateLoader("start");
     let data = await editTask(task.id, task.title, task.description, task.tag, task.isComplete);
-    console.log(task);
-    if(data.success){
+    // console.log(task);
+    updateLoader("end");
+    if (data.success) {
       props.alert("success", `${data.message}`);
     }
-    else{
+    else {
       props.alert("error", `${data.error}`);
     }
     closeEditModal.current.click();
@@ -103,11 +108,11 @@ const Home = (props) => {
         </div>
       </div>
       <div className='container'>
-        <h1 className='my-5 text-center'>TMS - Your Personal Task Management System</h1>
-        {tasks.length === 0 ? <p>No tasks to display!</p> :
+        <h1 className='my-5 text-center text-light d-flex justify-content-center align-items-center'><span style={{fontSize: "45px"}} id='logo-font'>TMS &nbsp;</span><span> - Your Personal Task Management System</span></h1>
+        {tasks.length === 0 ? <p className='text-light text-center'>No tasks found! Start by adding a new Task.</p> :
           <>
             {tasks.map((task) => {
-              return <Task key={task._id} updateTask={updateTask} task={task} alert={props.alert} />
+              return <Task key={task._id} updateTask={updateTask} task={task} alert={props.alert} updateLoader={updateLoader} />
             })}
           </>}
       </div>

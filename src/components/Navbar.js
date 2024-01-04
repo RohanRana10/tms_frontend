@@ -15,9 +15,11 @@ const Navbar = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        props.updateLoader("start");
         let data = await addTask(task.title, task.description, task.tag, task.isComplete);
         setTask({ title: '', description: '', tag: '', isComplete: false });
         modalClose.current.click();
+        props.updateLoader("end");
         if (data.success) {
             props.alert("success", `${data.message}`);
         }
@@ -83,29 +85,26 @@ const Navbar = (props) => {
                 </div>
             </div>
 
-            <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">TMS</Link>
+                    <Link style={{color: 'white'}} id='logo-font' className="navbar-brand" to="/">TMS</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">My Tasks</Link>
-                            </li>
                         </ul>
                         <div>
                             {localStorage.getItem('authtoken') ?
                                 <>
-                                    {location.pathname === '/' && (<button type="button" className="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    {location.pathname === '/' && (<button type="button" className="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         <i className="fa-solid fa-plus me-2"></i>New Task</button>)}
-                                    <button type="button" onClick={handleLogout} className="btn btn-primary mx-2"><i className="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</button>
+                                    <button type="button" onClick={handleLogout} className="btn btn-outline-primary mx-2 me-lg-3"><i className="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</button>
                                 </> :
                                 <>
-                                    <Link className="btn btn-primary mx-2" to='/login' role='button'><i className="fa-solid fa-arrow-right-from-bracket me-2"></i>Login
+                                    <Link className="btn btn-outline-success me-2" to='/login' role='button'><i className="fa-solid fa-arrow-right-from-bracket me-2"></i>Login
                                     </Link>
-                                    <Link className="btn btn-primary mx-2" to='/signup' role='button'><i className="fa-solid fa-user-plus me-2"></i>Sign up
+                                    <Link className="btn btn-outline-warning mx-2" to='/signup' role='button'><i className="fa-solid fa-user-plus me-2"></i>Signup
                                     </Link>
                                 </>}
                         </div>
