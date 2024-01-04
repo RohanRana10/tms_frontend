@@ -7,7 +7,7 @@ Your Personal Task Management System.
 - [About](#about)
 - [Features](#features)
 - [Installation](#installation)
-- [ScreenShots](#screenshots)
+- [Screenshots](#screenshots)
 
 ## About
 
