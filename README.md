@@ -57,8 +57,8 @@ npm start
 
 - Home Page  
 
-![TMS LOGIN PAGE](https://i.postimg.cc/BQLH7TsH/home-page.png)  
+![TMS HOME PAGE](https://i.postimg.cc/BQLH7TsH/home-page.png)  
 
 - Edit Task  
 
-![TMS LOGIN PAGE](https://i.postimg.cc/VLxMxJLT/edit-task.png)  
+![TMS EDIT TASK MODAL](https://i.postimg.cc/VLxMxJLT/edit-task.png)  
