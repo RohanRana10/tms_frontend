@@ -20,7 +20,7 @@ function App() {
 
   const updateLoader = (status) => {
     if(status === 'start'){
-      loaderRef.current.continuousStart(2);
+      loaderRef.current.continuousStart(2,2500);
     }
     else{
       loaderRef.current.complete();
@@ -34,7 +34,7 @@ function App() {
           border: '1px solid #FFFFFF',
           padding: '14px',
           color: '#FFFFFF',
-          backgroundColor: '#061621'
+          backgroundColor: '#000000'
         },
       });
     }
@@ -44,7 +44,7 @@ function App() {
           border: '1px solid #FFFFFF',
           padding: '14px',
           color: '#FFFFFF',
-          backgroundColor: '#061621'
+          backgroundColor: '#000000'
         }
       });
     }
